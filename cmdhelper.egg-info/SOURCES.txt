@@ -1,0 +1,14 @@
+setup.cfg
+setup.py
+cmdhelper.egg-info/PKG-INFO
+cmdhelper.egg-info/SOURCES.txt
+cmdhelper.egg-info/dependency_links.txt
+cmdhelper.egg-info/top_level.txt
+scripts/ch
+scripts/chdel
+scripts/chlist
+scripts/chmark
+scripts/chrun
+scripts/chset
+src/cmdhelper/CmdHelper.py
+src/cmdhelper/__init__.py

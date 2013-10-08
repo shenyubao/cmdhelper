@@ -1,0 +1,38 @@
+#!/Library/Frameworks/Python.framework/Versions/2.7/Resources/Python.app/Contents/MacOS/Python
+from cmdhelper.CmdHelper import *
+#import sys
+#sys.path.append('/Projects/python/cmdhelper')
+#from src.cmdhelper.CmdHelper import *
+
+if __name__ == "__main__":
+    args = sys.argv
+    if len(args) < 2:
+        exit()
+
+    cmdHelper = CmdHelper()
+
+    if(args[1] == "set"):
+        if(["uid","token"].index(args[2]) > -1):
+            cmdHelper.set_config(args[2],args[3])
+
+    exit()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,22 @@
+#!/usr/bin/python
+from cmdhelper.CmdHelper import *
+#import sys
+#sys.path.append('/Projects/python/cmdhelper')
+#from src.cmdhelper.CmdHelper import *
+
+args = sys.argv
+
+if len(args) < 2:
+   exit()
+
+cmdHelper = CmdHelper()
+command = cmdHelper.get(args[1])
+if (command == None):
+    print("Key not exist")
+    exit()
+
+if(command['type'] == 'c'):
+    print("Going to run: " + str(command['value']))
+    os.system(command["value"])
+else:
+    print(str(command['value']))
