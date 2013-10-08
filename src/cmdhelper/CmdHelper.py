@@ -7,13 +7,13 @@ import sys
 
 class CmdHelper:
 
-    path = "/tmp/.cmdhelper"
+    path = os.path.expanduser("~")+"/.cmdhelper"
     entites = []
 
     def __init__(self):
         self.load()
         #if (__debug__) :
-            #print("Init finished: %s" % self.get_data_path())
+        #   print("Init finished: %s" % self.get_data_path())
         pass
 
     def list(self):
@@ -37,13 +37,17 @@ class CmdHelper:
         pass
 
     def set(self,id,value,type="c"):
+        is_exist = False
         for i in range(len(self.entites)):
             if(self.entites[i]["id"] == id):
+                is_exist = True
                 print("key replaces")
                 self.entites[i]["value"] = value
-                del self.entites[i]
+                break
 
-        self.entites.append({"id":id,"value":value,"type":type})
+        if(not is_exist):
+            self.entites.append({"id":id,"value":value,"type":type})
+
         self.save()
         pass
 
@@ -82,8 +86,6 @@ class CmdHelper:
             self.entites = pickle.load(f)
         pass
 
-
-
     def save(self):
         data_path = self.get_data_path()
         if os.access(self.path,os.F_OK) == False:
@@ -121,4 +123,3 @@ class CmdHelper:
         uid = config['uid']
         data_path = "%s/%s.data" % (self.path,uid)
         return data_path
-
