@@ -12,3 +12,4 @@ scripts/chrun
 scripts/chset
 src/cmdhelper/CmdHelper.py
 src/cmdhelper/__init__.py
+src/cmdhelper/urllib2_file.py
