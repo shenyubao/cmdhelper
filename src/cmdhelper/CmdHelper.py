@@ -146,7 +146,12 @@ class CmdHelper:
                 'pwd':encry_pwd,
                 'upload':open(data_path)}
 
-        the_page = urllib2.urlopen(host, values).read()
+        try:
+            the_page = urllib2.urlopen(host, values).read()
+        except:
+            print("Please check yout remote host")
+            exit()
+
         print(the_page)
 
 
@@ -163,8 +168,16 @@ class CmdHelper:
         values = {'uid':uid,
                 'pwd':encry_pwd}
 
-        data = urllib2.urlopen(host, values).read()
-        self.entites = pickle.loads(data)
-        self.save()
-        print("Update Success")
-        self.list()
+        try:
+            data = urllib2.urlopen(host, values).read()
+        except:
+            print("Please check yout remote host")
+            exit()
+
+        try:
+            self.entites = pickle.loads(data)
+            self.save()
+            print("Update Success")
+            self.list()
+        except:
+            print(data)
