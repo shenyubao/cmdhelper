@@ -156,10 +156,6 @@ class CmdHelper:
 
 
     def pull(self):
-        data_path =  self.get_data_path()
-        if os.path.exists(data_path) == False :
-            return
-
         host = self.config['host'] + '/dict/pull'
         uid  = self.config['uid']
         pwd  = self.config['pwd']
