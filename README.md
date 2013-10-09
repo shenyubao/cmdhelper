@@ -9,8 +9,8 @@
     客户端安装:
     0.安装 python2.7 (yum,apt-get,brew....)
     1.安装 easy_install (yum,apt-get,brew....)
-    1.获取发布包: wget https://raw.github.com/Shenyubao/cmdhelper/master/dist/cmdhelper-0.2-py2.7.egg
-    2.安装:easy_install cmdhelper-0.2-py2.7.egg
+    2.获取发布包: wget https://raw.github.com/Shenyubao/cmdhelper/master/dist/cmdhelper-0.2-py2.7.egg
+    3.安装:easy_install cmdhelper-0.2-py2.7.egg
   
     服务端安装:(可选,远程备份命令时需要)
     1.将server内文件部署到服务器上(推荐SAE)
