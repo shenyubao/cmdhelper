@@ -1,15 +1,11 @@
 import sae
 from hashlib import md5
 from bottle import Bottle,request,debug
-
+from users import users
 import urllib2 as urilib
 import sae.kvdb
 
 SECRET = "fc967we161f7d898ad257d62407373"
-users = {
-    "yubao1":"123456",
-    "xiaoqing4":"123456",
-    "liulei12":"123456"}
 messages ={
     "0" : "success",
     "1" : "User Not Exist",
