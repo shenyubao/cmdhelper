@@ -1,9 +1,22 @@
 #CmdHelper
 命令行拓展工具: 为常用命令提供存储和快捷调用,并提供本地命令跨机器同步.
 
-##功能说明
+##路线图
     v0.1 - 为常用命令提供快捷调用
     v0.2 - 实现服务器备份,跨机器同步.
+
+##命令表
+    ch :CmdHelper管理
+    ch set [uid|pwd|host] XXX 设置变量
+    ch pull 更新本地命令库
+    ch push 提交本地命令库
+    ch list 变量一览
+    
+    chlist 查看现有命令
+    chset KEY XXX  设置新命令
+    chdel [id|KEY] 删除命令
+    chrun [id|KEY] 运行命令
+    chmark KEY     存储当前路径
 
 ##安装说明
     客户端安装:
