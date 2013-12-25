@@ -4,6 +4,7 @@
 ##路线图
     v0.1 - 为常用命令提供快捷调用
     v0.2 - 实现服务器备份,跨机器同步.
+    v0.3 - 实现命令同步至alias文件(直接输入Key即可执行命令,Key可自动补全).
 
 ##命令表
     ch :CmdHelper管理
@@ -16,14 +17,15 @@
     chset KEY XXX  设置新命令
     chdel [id|KEY] 删除命令
     chrun [id|KEY] 运行命令
+    KEY            运行命令(直接是用Key即可执行命令)
     chmark KEY     存储当前路径
 
 ##安装说明
     客户端安装:
     0.安装 python2.7 (yum,apt-get,brew....)
     1.安装 easy_install (yum,apt-get,brew....)
-    2.获取发布包: wget https://raw.github.com/Shenyubao/cmdhelper/master/dist/cmdhelper-0.2-py2.7.egg
-    3.安装:easy_install cmdhelper-0.2-py2.7.egg
+    2.获取发布包: wget https://raw.github.com/Shenyubao/cmdhelper/master/dist/cmdhelper-0.3-py2.7.egg
+    3.安装:easy_install cmdhelper-0.3-py2.7.egg
   
     服务端安装:(可选,远程备份命令时需要)
     1.将server内文件部署到服务器上(推荐SAE)
@@ -50,7 +52,7 @@
 ![](https://raw.github.com/Shenyubao/cmdhelper/master/images/chset.png)
    
 
-    
+
 ####chdel
     chdel [index|key]  #删除Key-Value
     chdel 1
@@ -63,6 +65,9 @@
     chrun 1
     chrun db.dev  
 ![](https://raw.github.com/Shenyubao/cmdhelper/master/images/chrun.png)
+
+    db.[Tab]
+![](https://raw.github.com/Shenyubao/cmdhelper/master/images/alias.png)
 
     
 ####chmark
