@@ -26,6 +26,8 @@ if __name__ == "__main__":
     if(args[1] == "pull"):
         cmdHelper.pull()
 
+    if(args[1] == "_set_value"):
+        cmdHelper.set(args[2]," ".join(args[3:]))
     exit()
 
 

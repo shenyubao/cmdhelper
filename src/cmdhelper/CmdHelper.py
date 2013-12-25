@@ -1,3 +1,4 @@
+#-*- coding: utf-8 -*-
 __author__ = 'shenyubao'
 
 import pickle
@@ -10,6 +11,9 @@ from hashlib import md5
 SECRET = "fc967we161f7d898ad257d62407373"
 class CmdHelper:
     path = os.path.expanduser("~")+"/.cmdhelper"
+    alias_path = path + "/alias_profile"
+    profile_path = os.path.expanduser("~") + "/.bashrc"
+
     config = {}
     entites = []
 
@@ -97,8 +101,12 @@ class CmdHelper:
         if os.access(self.path,os.F_OK) == False:
             os.mkdir(self.path)
 
+        #存储数据文件
         with open(data_path,'wb+') as f:
             pickle.dump(self.entites,f)
+
+        #存储alias
+        self.save_alias()
         pass
 
     def set_config(self,key,value):
@@ -111,6 +119,8 @@ class CmdHelper:
             with open(config_path,'rb+') as f:
                 config = pickle.load(f)
 
+        if(key == 'pwd'):
+            value = md5(md5(SECRET+pwd).hexdigest() + SECRET).hexdigest()
         config[key] = value
         with open(config_path,"wb+") as f:
             pickle.dump(config,f)
@@ -154,7 +164,6 @@ class CmdHelper:
 
         print(the_page)
 
-
     def pull(self):
         host = self.config['host'] + '/dict/pull'
         uid  = self.config['uid']
@@ -177,3 +186,38 @@ class CmdHelper:
             self.list()
         except:
             print(data)
+
+    # Save Alias
+    def save_alias(self):
+        #if(__debug__):
+        #    print("[debug]alias path:" + self.alias_path)
+
+        with open(self.alias_path,'w+') as f:
+            f.write("##\n")
+            f.write("# This file is created by CmdHelper,Do not Change this By youself\n")
+            f.write("##\n")
+            f.write("alias chset='source chset'\n");
+            for k in self.entites:
+                f.write("alias %s='%s'\n" % (k['id'],k['value']))
+
+        has_alias = self.check_alise()
+        if(has_alias):
+            pass
+        else:
+            f = open(self.profile_path,"a")
+            f.write("\n")
+            f.write("#CmdHelper\n")
+            f.write("source " + self.alias_path + "\n")
+            f.write("\n")
+            f.close()
+            os.system("source " + self.profile_path)
+
+    #Check Invoke
+    def check_alise(self):
+        with open(self.profile_path,"r") as f:
+            for each_line in f:
+                if(each_line == "#CmdHelper\n"):
+                    return True
+        return False
+
+

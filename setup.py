@@ -7,7 +7,7 @@ except ImportError:
 import os.path
 
 setup(name='cmdhelper',
-      version='0.2',
+      version='0.3',
       description="A tool for cmd",
       long_description="""A tool for cmd""",
       author='Shenyubao',
